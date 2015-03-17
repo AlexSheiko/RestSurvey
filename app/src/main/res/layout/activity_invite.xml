@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity"
+                android:gravity="center_horizontal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#ad57b987"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/frameLayout2"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/people_bg"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/frameLayout2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invite_message"
+        android:id="@+id/messageTextView"
+        android:textSize="32sp"
+        android:textColor="#a2000000"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/frameLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="180dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startButton"
+        android:text="Start survey"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
+        android:textSize="28sp"
+        android:textScaleX="1.05"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/start_button_selector"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="34dp"
+        android:paddingRight="34dp"
+        android:layout_below="@+id/messageTextView"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
