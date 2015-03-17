@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="start_button_normal">#63c29d</color>
+    <color name="start_button_focused">#46b68a</color>
+    <color name="start_button_pressed">#1fb078</color>
+
+</resources>
