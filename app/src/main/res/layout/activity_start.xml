@@ -47,7 +47,7 @@
         android:textSize="28sp"
         android:textScaleX="1.05"
         android:layout_marginTop="60dp"
-        android:background="@drawable/start_button_selector"
+        android:background="@drawable/start_button"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:paddingLeft="34dp"

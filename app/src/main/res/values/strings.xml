@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">RestSurvey</string>
-
     <string name="hello_world">Hello world!</string>
-    <string name="action_change_theme">Change theme</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_change_theme">Change theme</string>
+    <string name="invite_message">Thank you for visiting us today! If you have time, please tell us how we did.</string>
+    <string name="logo_description">Restaurant logo</string>
+    <string name="question_sample">Was the food prepared to your liking?</string>
+    <string name="button_great_label">Absolutely!</string>
+    <string name="button_good_label">It was good</string>
+    <string name="button_okay_label">Need improvement</string>
+    <string name="button_bad_label">Not as expected</string>
 </resources>
