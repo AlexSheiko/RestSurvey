@@ -10,10 +10,13 @@ import android.support.v4.view.ViewPager;
 
 import com.parse.ParseObject;
 
+import sheyko.aleksey.restsurvey.PageFragment.OnAnswerSelectedListener;
+
 import static sheyko.aleksey.restsurvey.provider.Questions.questions;
 
 
-public class SurveyActivity extends FragmentActivity {
+public class SurveyActivity extends FragmentActivity
+        implements OnAnswerSelectedListener {
 
     private ViewPager mPager;
 
@@ -29,6 +32,14 @@ public class SurveyActivity extends FragmentActivity {
 
         ParseObject session = new ParseObject("Session");
         session.saveInBackground();
+    }
+
+    @Override public void onAnswerSelected() {
+        if (mPager.getCurrentItem() < questions.length) {
+            mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+        } else {
+            // TODO: Show finish activity
+        }
     }
 
     @Override
