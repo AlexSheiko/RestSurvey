@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
 
 
 public class StartActivity extends Activity {
@@ -22,6 +23,7 @@ public class StartActivity extends Activity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "cvwSNlSuCvUWvOP9RYXtPhWZR3Bm69xgT979VZk3",
                 "S72yDeO7sVS96p9IRjZzmeE9sy6WwxVhZsdn2sFQ");
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
