@@ -1,5 +1,6 @@
 package sheyko.aleksey.restsurvey;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.parse.GetCallback;
 import com.parse.Parse;
@@ -21,14 +23,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import sheyko.aleksey.restsurvey.PageFragment.OnAnswerSelectedListener;
+import sheyko.aleksey.restsurvey.SurveyFragment.OnAnswerSelectedListener;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
 public class SurveyActivity extends FragmentActivity
         implements OnAnswerSelectedListener {
 
-    private static final String TAG = StartActivity.class.getSimpleName();
+    private static final String TAG = InviteActivity.class.getSimpleName();
 
     private ViewPager mPager;
     private QuestionDataSource mDataSource;
@@ -36,6 +38,8 @@ public class SurveyActivity extends FragmentActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_survey);
 
         try {
@@ -45,6 +49,13 @@ public class SurveyActivity extends FragmentActivity
             ParseAnalytics.trackAppOpenedInBackground(getIntent());
         } catch (IllegalStateException ise) {
             Log.i(TAG, "Parse already initialized");
+        }
+
+        ActionBar bar = getActionBar();
+        if (bar != null) {
+            bar.setDisplayHomeAsUpEnabled(false);
+            bar.setDisplayShowCustomEnabled(true);
+            bar.setCustomView(R.layout.ab_survey);
         }
 
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -57,7 +68,7 @@ public class SurveyActivity extends FragmentActivity
     }
 
     @Override public void onAnswerSelected() {
-        if (mPager.getCurrentItem() < mDataSource.getCount() - 1) {
+        if (mPager.getCurrentItem() < /* TODO: mDataSource.getCount() - 1*/ 2) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
         } else {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
@@ -76,7 +87,7 @@ public class SurveyActivity extends FragmentActivity
                     }
                 }
             });
-            startActivity(new Intent(this, StartActivity.class));
+            startActivity(new Intent(this, FinishActivity.class));
         }
     }
 
@@ -97,7 +108,7 @@ public class SurveyActivity extends FragmentActivity
 
         @Override
         public Fragment getItem(int position) {
-            return PageFragment.newInstance(position);
+            return SurveyFragment.newInstance(position);
         }
 
         @Override

@@ -4,10 +4,7 @@
 
     <string name="action_change_theme">Change theme</string>
     <string name="invite_message">Thank you for visiting us today! If you have time, please tell us how we did.</string>
-    <string name="logo_description">Restaurant logo</string>
-
-    <string name="button_great_label">Absolutely!</string>
-    <string name="button_bad_label">Need improvement</string>
 
     <string name="unspecified_question"><i>Question unspecified</i></string>
+    <string name="action_settings">Settings</string>
 </resources>

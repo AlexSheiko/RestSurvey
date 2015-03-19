@@ -33,9 +33,10 @@
         android:gravity="center_horizontal"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/messageTextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -50,8 +51,8 @@
         android:background="#f1693c"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:paddingLeft="34dp"
-        android:paddingRight="34dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"/>

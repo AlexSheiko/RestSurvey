@@ -22,10 +22,10 @@ import java.util.Arrays;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
-public class PageFragment extends Fragment
+public class SurveyFragment extends Fragment
         implements OnClickListener {
 
-    private static final String TAG = PageFragment.class.getSimpleName();
+    private static final String TAG = SurveyFragment.class.getSimpleName();
 
     private QuestionDataSource mDataSource;
     private String mCurrentQuestion;
@@ -36,8 +36,8 @@ public class PageFragment extends Fragment
         public void onAnswerSelected();
     }
 
-    public static PageFragment newInstance(int page) {
-        PageFragment f = new PageFragment();
+    public static SurveyFragment newInstance(int page) {
+        SurveyFragment f = new SurveyFragment();
 
         Bundle args = new Bundle();
         args.putInt("page", page);
@@ -66,7 +66,7 @@ public class PageFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_page, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_survey, container, false);
 
         int page = getArguments().getInt("page");
         mCurrentQuestion = mDataSource.getQuestions().get(page);
@@ -81,8 +81,7 @@ public class PageFragment extends Fragment
         }
 
         rootView.findViewById(R.id.buttonGood).setOnClickListener(this);
-        rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
-        rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
+        rootView.findViewById(R.id.buttonOkay).setOnClickListener(this);
         rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
 
         return rootView;
