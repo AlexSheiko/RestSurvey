@@ -21,7 +21,8 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:textColor="@android:color/white"
+        android:textColor="#e6ffffff"
         android:gravity="center_horizontal"
-        android:textSize="30sp"/>
+        android:textSize="35sp"
+        android:textStyle="bold"/>
 </RelativeLayout>

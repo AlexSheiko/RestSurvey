@@ -10,18 +10,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 
-public class InviteActivity extends Activity {
+public class StartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invite);
+        setContentView(R.layout.activity_start);
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
             @Override public void onClick(View view) {
-                startActivity(new Intent(InviteActivity.this,
-                        SurveyActivity.class));
+                startActivity(new Intent(StartActivity.this,
+                        SurveyActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }

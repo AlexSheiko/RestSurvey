@@ -14,7 +14,7 @@
         android:text="Thank you for visiting us today!"
         android:id="@+id/messageTextView"
         android:textSize="55sp"
-        android:textColor="@android:color/white"
+        android:textColor="#e6ffffff"
         android:gravity="center_horizontal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -43,18 +43,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/startButton"
         android:text="Start survey"
-        android:textColor="@android:color/white"
-        android:fontFamily="sans-serif-medium"
-        android:textAllCaps="true"
-        android:textSize="28sp"
-        android:textScaleX="1.05"
-        android:background="#f1693c"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="36dp"
-        android:paddingRight="36dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        style="@style/ChoiceButton"
+        android:textSize="30sp"
+        android:textColor="#c8ffffff"
+        android:background="@drawable/button_start"/>
 
 </RelativeLayout>

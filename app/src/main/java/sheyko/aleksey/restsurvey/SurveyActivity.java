@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
 
 import com.parse.GetCallback;
@@ -19,10 +21,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import sheyko.aleksey.restsurvey.SurveyFragment.OnAnswerSelectedListener;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
@@ -30,7 +28,7 @@ import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 public class SurveyActivity extends FragmentActivity
         implements OnAnswerSelectedListener {
 
-    private static final String TAG = InviteActivity.class.getSimpleName();
+    private static final String TAG = StartActivity.class.getSimpleName();
 
     private ViewPager mPager;
     private QuestionDataSource mDataSource;
@@ -57,6 +55,16 @@ public class SurveyActivity extends FragmentActivity
             bar.setDisplayShowCustomEnabled(true);
             bar.setCustomView(R.layout.ab_survey);
         }
+        findViewById(R.id.arrow_back).setOnClickListener(new OnClickListener() {
+            @Override public void onClick(View view) {
+                navigateToPreviousPage();
+            }
+        });
+        findViewById(R.id.arrow_next).setOnClickListener(new OnClickListener() {
+            @Override public void onClick(View view) {
+                navigateToNextPage();
+            }
+        });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(
@@ -68,6 +76,18 @@ public class SurveyActivity extends FragmentActivity
     }
 
     @Override public void onAnswerSelected() {
+        navigateToNextPage();
+    }
+
+    private void navigateToPreviousPage() {
+        if (mPager.getCurrentItem() == 0) {
+            finish();
+        } else {
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
+
+    private void navigateToNextPage() {
         if (mPager.getCurrentItem() < /* TODO: mDataSource.getCount() - 1*/ 2) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
         } else {
@@ -75,6 +95,8 @@ public class SurveyActivity extends FragmentActivity
             query.orderByDescending("createdAt");
             query.getFirstInBackground(new GetCallback<ParseObject>() {
                 @Override public void done(ParseObject session, ParseException e) {
+                    // TODO: Uncomment before releasing
+                    /*
                     if (e == null) {
                         Map<String, String> dimensions = new HashMap<>();
 
@@ -82,9 +104,9 @@ public class SurveyActivity extends FragmentActivity
                         for(List<String> answer : answers) {
                             dimensions.put(answer.get(0), answer.get(1));
                         }
-                        // TODO: Uncomment before releasing
-                        // ParseAnalytics.trackEventInBackground("Answers", dimensions);
+                        ParseAnalytics.trackEventInBackground("Answers", dimensions);
                     }
+                    */
                 }
             });
             startActivity(new Intent(this, FinishActivity.class));
