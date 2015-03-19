@@ -7,8 +7,7 @@
     <string name="logo_description">Restaurant logo</string>
 
     <string name="button_great_label">Absolutely!</string>
-    <string name="button_good_label">It was good</string>
-    <string name="button_okay_label">Need improvement</string>
-    <string name="button_bad_label">Not as expected</string>
+    <string name="button_bad_label">Need improvement</string>
+
     <string name="unspecified_question"><i>Question unspecified</i></string>
 </resources>

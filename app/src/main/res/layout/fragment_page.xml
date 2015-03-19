@@ -10,42 +10,31 @@
              android:paddingRight="30dp"
              tools:context="sheyko.aleksey.restsurvey.PageFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/logoImageView"
-        android:scaleType="centerInside"
-        android:background="@drawable/logo_sample"
-        android:contentDescription="@string/logo_description"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/questionTextView"
-        android:textSize="30sp"
+        android:textColor="#a2000000"
+        android:textSize="45sp"
         android:gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        tools:text="Was the food prepared to your liking?"/>
-
-    <Button
-        android:id="@+id/buttonGreat"
-        android:text="@string/button_great_label"
-        style="@style/ChoiceButton"/>
+        tools:text="Was the food prepared to your liking?"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        />
 
     <Button
         android:id="@+id/buttonGood"
-        android:text="@string/button_good_label"
-        style="@style/ChoiceButton"/>
-
-    <Button
-        android:id="@+id/buttonOkay"
-        android:text="@string/button_okay_label"
-        style="@style/ChoiceButton"/>
+        android:text="@string/button_great_label"
+        style="@style/ChoiceButton"
+        android:layout_marginTop="40dp"
+        android:background="#9fc05a"/>
 
     <Button
         android:id="@+id/buttonBad"
         android:text="@string/button_bad_label"
-        style="@style/ChoiceButton"/>
+        style="@style/ChoiceButton"
+        android:background="#ff8b5a"/>
 
 </LinearLayout>

@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.parse.GetCallback;
+import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -20,19 +22,30 @@ import java.util.List;
 import java.util.Map;
 
 import sheyko.aleksey.restsurvey.PageFragment.OnAnswerSelectedListener;
-
-import static sheyko.aleksey.restsurvey.provider.Questions.questions;
+import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
 public class SurveyActivity extends FragmentActivity
         implements OnAnswerSelectedListener {
 
+    private static final String TAG = StartActivity.class.getSimpleName();
+
     private ViewPager mPager;
+    private QuestionDataSource mDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
+
+        try {
+            Parse.enableLocalDatastore(this);
+            Parse.initialize(this, "cvwSNlSuCvUWvOP9RYXtPhWZR3Bm69xgT979VZk3",
+                    "S72yDeO7sVS96p9IRjZzmeE9sy6WwxVhZsdn2sFQ");
+            ParseAnalytics.trackAppOpenedInBackground(getIntent());
+        } catch (IllegalStateException ise) {
+            Log.i(TAG, "Parse already initialized");
+        }
 
         mPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(
@@ -44,7 +57,7 @@ public class SurveyActivity extends FragmentActivity
     }
 
     @Override public void onAnswerSelected() {
-        if (mPager.getCurrentItem() < questions.length - 1) {
+        if (mPager.getCurrentItem() < mDataSource.getCount() - 1) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
         } else {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
@@ -58,7 +71,8 @@ public class SurveyActivity extends FragmentActivity
                         for(List<String> answer : answers) {
                             dimensions.put(answer.get(0), answer.get(1));
                         }
-                        ParseAnalytics.trackEventInBackground("Answers", dimensions);
+                        // TODO: Uncomment before releasing
+                        // ParseAnalytics.trackEventInBackground("Answers", dimensions);
                     }
                 }
             });
@@ -75,9 +89,10 @@ public class SurveyActivity extends FragmentActivity
         }
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
+            mDataSource = new QuestionDataSource();
         }
 
         @Override
@@ -87,7 +102,7 @@ public class SurveyActivity extends FragmentActivity
 
         @Override
         public int getCount() {
-            return questions.length;
+            return mDataSource.getCount();
         }
     }
 }

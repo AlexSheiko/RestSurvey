@@ -19,7 +19,7 @@ import com.parse.ParseQuery;
 
 import java.util.Arrays;
 
-import static sheyko.aleksey.restsurvey.provider.Questions.questions;
+import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
 public class PageFragment extends Fragment
@@ -27,6 +27,7 @@ public class PageFragment extends Fragment
 
     private static final String TAG = PageFragment.class.getSimpleName();
 
+    private QuestionDataSource mDataSource;
     private String mCurrentQuestion;
 
     OnAnswerSelectedListener mCallback;
@@ -57,13 +58,18 @@ public class PageFragment extends Fragment
         }
     }
 
+    @Override public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDataSource = new QuestionDataSource();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_page, container, false);
 
         int page = getArguments().getInt("page");
-        mCurrentQuestion = questions[page];
+        mCurrentQuestion = mDataSource.getQuestions().get(page);
 
         TextView questionTextView = (TextView) rootView.findViewById(R.id.questionTextView);
         if (!mCurrentQuestion.trim().isEmpty()) {
@@ -74,9 +80,9 @@ public class PageFragment extends Fragment
             questionTextView.setText(R.string.unspecified_question);
         }
 
-        rootView.findViewById(R.id.buttonGreat).setOnClickListener(this);
         rootView.findViewById(R.id.buttonGood).setOnClickListener(this);
-        rootView.findViewById(R.id.buttonOkay).setOnClickListener(this);
+        rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
+        rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
         rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
 
         return rootView;
@@ -89,8 +95,9 @@ public class PageFragment extends Fragment
             @Override public void done(ParseObject session, ParseException e) {
                 if (e == null) {
                     session.add("answers", Arrays.asList(
-                                    mCurrentQuestion, ((Button) view).getText()));
-                    session.saveEventually();
+                            mCurrentQuestion, ((Button) view).getText()));
+                    // TODO: Uncomment before releasing
+                    // session.saveEventually();
                     mCallback.onAnswerSelected();
                 } else {
                     Toast.makeText(getActivity(),

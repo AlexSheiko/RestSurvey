@@ -3,38 +3,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".MainActivity"
-                android:gravity="center_horizontal">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="#ad57b987"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/frameLayout2"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/people_bg"
-        android:scaleType="centerCrop"
-        android:layout_below="@+id/frameLayout2"/>
+                android:gravity="center_horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+    android:background="#0e91a1">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/invite_message"
+        android:text="Thank you for visiting us today!"
         android:id="@+id/messageTextView"
-        android:textSize="32sp"
-        android:textColor="#a2000000"
-        android:fontFamily="sans-serif-black"
+        android:textSize="55sp"
+        android:textColor="@android:color/white"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/frameLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="180dp"
         android:paddingLeft="32dp"
-        android:paddingRight="32dp"/>
+        android:paddingRight="32dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="If you have a moment, please help us improve our service"
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:gravity="center_horizontal"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -46,13 +47,13 @@
         android:textAllCaps="true"
         android:textSize="28sp"
         android:textScaleX="1.05"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/start_button"
+        android:background="#f1693c"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:paddingLeft="34dp"
         android:paddingRight="34dp"
-        android:layout_below="@+id/messageTextView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
 
 </RelativeLayout>
