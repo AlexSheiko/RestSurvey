@@ -1,7 +1,9 @@
-package sheyko.aleksey.restsurvey;
+package sheyko.aleksey.restsurvey.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import sheyko.aleksey.restsurvey.R;
 
 
 public class FinishActivity extends Activity {

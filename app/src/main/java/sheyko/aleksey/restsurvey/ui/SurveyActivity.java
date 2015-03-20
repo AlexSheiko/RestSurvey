@@ -1,4 +1,4 @@
-package sheyko.aleksey.restsurvey;
+package sheyko.aleksey.restsurvey.ui;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -18,7 +18,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import sheyko.aleksey.restsurvey.SurveyFragment.OnAnswerSelectedListener;
+import sheyko.aleksey.restsurvey.R;
+import sheyko.aleksey.restsurvey.ui.SurveyFragment.OnAnswerSelectedListener;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 

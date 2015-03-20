@@ -1,4 +1,4 @@
-package sheyko.aleksey.restsurvey;
+package sheyko.aleksey.restsurvey.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,17 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import java.util.Arrays;
-
+import sheyko.aleksey.restsurvey.R;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
@@ -95,13 +87,13 @@ public class SurveyFragment extends Fragment
     }
 
     @Override public void onClick(final View view) {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
-        query.orderByDescending("createdAt");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override public void done(ParseObject session, ParseException e) {
-                if (e == null) {
-                    session.add("answers", Arrays.asList(
-                            mCurrentQuestion, ((Button) view).getText()));
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
+//        query.orderByDescending("createdAt");
+//        query.getFirstInBackground(new GetCallback<ParseObject>() {
+//            @Override public void done(ParseObject session, ParseException e) {
+//                if (e == null) {
+//                    session.add("answers", Arrays.asList(
+//                            mCurrentQuestion, ((Button) view).getText()));
                     // TODO: Uncomment before releasing
                     // session.saveEventually();
                     mCallback.onAnswerSelected();
@@ -118,12 +110,12 @@ public class SurveyFragment extends Fragment
                     } else {
                         barTitle.setText("Last question");
                     }
-                } else {
-                    Toast.makeText(getActivity(),
-                            "Please check your network connection",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//                } else {
+//                    Toast.makeText(getActivity(),
+//                            "Please check your network connection",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 }
