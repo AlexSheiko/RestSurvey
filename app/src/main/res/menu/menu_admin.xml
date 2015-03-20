@@ -2,6 +2,7 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="sheyko.aleksey.restsurvey.ui.SurveyActivity">
     <item android:id="@+id/action_switch_theme"
+          android:icon="@drawable/ic_switch_theme"
           android:title="@string/action_change_theme"
-          android:showAsAction="never"/>
+          android:showAsAction="always"/>
 </menu>

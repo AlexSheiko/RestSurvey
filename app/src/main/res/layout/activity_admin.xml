@@ -3,7 +3,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#f3f3f3"
-                tools:context="sheyko.aleksey.restsurvey.ui.ControlPanelActivity">
+                tools:context="sheyko.aleksey.restsurvey.ui.AdminActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Signed in as\nmanager"
+        android:fontFamily="sans-serif-light"
+        android:textSize="60sp"
+        android:textColor="#5e000000"
+        android:id="@+id/textView6"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/startButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -34,8 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginRight="16dp"
-            android:id="@+id/">
+            android:layout_marginRight="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,6 +61,14 @@
                 android:layout_height="wrap_content"
                 android:text="4"
                 android:textSize="50sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turn on autosync"
+                android:id="@+id/textView5"
+                android:textColor="#2980b9"
+                android:textSize="18sp"/>
         </LinearLayout>
 
         <LinearLayout

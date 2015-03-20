@@ -11,6 +11,22 @@
 
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#0e91a1</item>
+        <item name="android:titleTextStyle">@style/ActionBar.TextStyle</item>
+        <item name="android:icon">@android:color/transparent</item>
+    </style>
+
+    <style name="ActionBar.TextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#b5ffffff</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.EmptyActionBar" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBar.Empty</item>
+    </style>
+
+    <style name="ActionBar.Empty" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#0e91a1</item>
         <item name="android:displayOptions">none</item>
     </style>
 
