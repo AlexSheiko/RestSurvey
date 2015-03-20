@@ -61,6 +61,17 @@ public class SurveyFragment extends Fragment
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDataSource = new QuestionDataSource();
+
+        TextView barTitle = (TextView) getActivity()
+                .findViewById(R.id.ab_title);
+
+        int currentPage = getArguments().getInt("page");
+        if (currentPage < mDataSource.getCount()) {
+            barTitle.setText(String.format("%s questions left",
+                    mDataSource.getCount() - currentPage));
+        } else {
+            barTitle.setText("Last question");
+        }
     }
 
     @Override
