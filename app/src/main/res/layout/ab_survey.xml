@@ -12,7 +12,7 @@
         android:src="@drawable/ic_arrow_left"
         android:background="@null"
         android:layout_toLeftOf="@+id/ab_title"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="12dp"
         android:layout_centerVertical="true"/>
 
     <TextView
@@ -33,7 +33,7 @@
         android:src="@drawable/ic_arrow_right"
         android:background="@null"
         android:layout_toRightOf="@+id/ab_title"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="12dp"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>
