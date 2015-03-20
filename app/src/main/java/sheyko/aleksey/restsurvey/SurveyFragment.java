@@ -65,13 +65,9 @@ public class SurveyFragment extends Fragment
         TextView barTitle = (TextView) getActivity()
                 .findViewById(R.id.ab_title);
 
-        int currentPage = getArguments().getInt("page");
-        if (currentPage < mDataSource.getCount()) {
-            barTitle.setText(String.format("%s questions left",
-                    mDataSource.getCount() - currentPage));
-        } else {
-            barTitle.setText("Last question");
-        }
+        barTitle.setText(String.format(
+                "%s questions left",
+                mDataSource.getCount() - 1));
     }
 
     @Override
@@ -109,6 +105,19 @@ public class SurveyFragment extends Fragment
                     // TODO: Uncomment before releasing
                     // session.saveEventually();
                     mCallback.onAnswerSelected();
+
+                    TextView barTitle = (TextView) getActivity()
+                            .findViewById(R.id.ab_title);
+
+                    int questionsLeft = mDataSource.getCount() - ((SurveyActivity)
+                            getActivity()).getCurrentPage() - 1;
+
+                    if (questionsLeft > 0) {
+                        barTitle.setText(String.format(
+                                "%d questions left", questionsLeft));
+                    } else {
+                        barTitle.setText("Last question");
+                    }
                 } else {
                     Toast.makeText(getActivity(),
                             "Please check your network connection",

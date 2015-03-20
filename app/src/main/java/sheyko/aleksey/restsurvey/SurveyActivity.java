@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.parse.GetCallback;
 import com.parse.ParseAnalytics;
@@ -65,6 +66,11 @@ public class SurveyActivity extends FragmentActivity
     }
 
     @Override public void onAnswerSelected() {
+        TextView barTitle = (TextView) findViewById(R.id.ab_title);
+        barTitle.setText(String.format(
+                "%s questions left",
+                mDataSource.getCount() - mPager.getCurrentItem()));
+
         navigateToNextPage();
     }
 
@@ -127,5 +133,9 @@ public class SurveyActivity extends FragmentActivity
         public int getCount() {
             return mDataSource.getCount();
         }
+    }
+
+    public int getCurrentPage() {
+        return mPager.getCurrentItem();
     }
 }
