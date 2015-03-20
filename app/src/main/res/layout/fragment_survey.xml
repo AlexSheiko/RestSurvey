@@ -11,12 +11,19 @@
               android:background="#f3f3f3"
               tools:context="sheyko.aleksey.restsurvey.ui.SurveyFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo_sample"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/questionTextView"
         android:textColor="#a2000000"
-        android:textSize="40sp"
+        android:textSize="36sp"
         android:gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
