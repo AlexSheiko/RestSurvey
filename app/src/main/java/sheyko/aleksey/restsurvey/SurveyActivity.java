@@ -9,8 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -45,16 +43,16 @@ public class SurveyActivity extends FragmentActivity
             bar.setDisplayShowCustomEnabled(true);
             bar.setCustomView(R.layout.ab_survey);
         }
-        findViewById(R.id.arrow_back).setOnClickListener(new OnClickListener() {
-            @Override public void onClick(View view) {
-                navigateToPreviousPage();
-            }
-        });
-        findViewById(R.id.arrow_next).setOnClickListener(new OnClickListener() {
-            @Override public void onClick(View view) {
-                navigateToNextPage();
-            }
-        });
+//        findViewById(R.id.arrow_back).setOnClickListener(new OnClickListener() {
+//            @Override public void onClick(View view) {
+//                navigateToPreviousPage();
+//            }
+//        });
+//        findViewById(R.id.arrow_next).setOnClickListener(new OnClickListener() {
+//            @Override public void onClick(View view) {
+//                navigateToNextPage();
+//            }
+//        });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(
