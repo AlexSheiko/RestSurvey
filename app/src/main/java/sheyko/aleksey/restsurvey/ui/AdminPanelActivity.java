@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 import sheyko.aleksey.restsurvey.R;
 
@@ -17,6 +20,11 @@ public class AdminPanelActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
+
+        ParseUser user = ParseUser.getCurrentUser();
+
+        TextView signedAsLabel = (TextView) findViewById(R.id.signedAsLabel);
+        signedAsLabel.setText(String.format("Signed in as\n%s", user.getUsername()));
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {

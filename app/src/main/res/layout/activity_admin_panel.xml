@@ -8,15 +8,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Signed in as\nmanager"
         android:fontFamily="sans-serif-light"
         android:textSize="60sp"
         android:textColor="#5e000000"
-        android:id="@+id/textView6"
+        android:id="@+id/signedAsLabel"
         android:gravity="center_horizontal"
         android:layout_above="@+id/startButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"/>
+        android:layout_marginBottom="122dp"
+        tools:text="Signed in as\nmanager"/>
 
     <Button
         android:layout_width="wrap_content"

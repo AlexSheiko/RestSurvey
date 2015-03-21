@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name=".ui.AdminLoginActivity"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".ui.AdminPanelActivity"

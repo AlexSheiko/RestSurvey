@@ -1,6 +1,7 @@
 package sheyko.aleksey.restsurvey.ui;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,11 +39,9 @@ public class CustomerStartActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            Intent i = new Intent(CustomerStartActivity.this,
-                    AdminPanelActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
+
+            DialogFragment f = new ConfirmExitFragment();
+            f.show(getFragmentManager(), "dialog");
             return;
         }
 
@@ -56,5 +55,13 @@ public class CustomerStartActivity extends Activity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    public void confirmExit() {
+        Intent i = new Intent(CustomerStartActivity.this,
+                AdminPanelActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 }
