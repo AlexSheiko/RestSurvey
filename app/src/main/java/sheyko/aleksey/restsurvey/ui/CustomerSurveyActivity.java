@@ -32,7 +32,6 @@ public class CustomerSurveyActivity extends FragmentActivity
 
     private ViewPager mPager;
     private QuestionDataSource mDataSource;
-    private ParseObject mSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +52,14 @@ public class CustomerSurveyActivity extends FragmentActivity
                 getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
 
-        mSession = new ParseObject("Session");
-        mSession.saveInBackground();
+        ParseObject session = new ParseObject("Session");
+        session.saveEventually();
     }
 
-    public ParseObject getSession() {
-        return mSession;
+    public void getCurrentSession(GetCallback<ParseObject> callback) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
+        query.orderByDescending("createdAt");
+        query.getFirstInBackground(callback);
     }
 
     @Override public void onAnswerSelected() {
@@ -97,6 +98,13 @@ public class CustomerSurveyActivity extends FragmentActivity
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
+            getCurrentSession(new GetCallback<ParseObject>() {
+                @Override public void done(ParseObject session, ParseException e) {
+                    if (session.getList("answers") == null) {
+                        session.deleteEventually();
+                    }
+                }
+            });
             super.onBackPressed();
         } else {
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);

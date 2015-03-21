@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 
 import java.util.Arrays;
@@ -92,11 +94,14 @@ public class CustomerSurveyFragment extends Fragment
     }
 
     @Override public void onClick(final View view) {
-        ParseObject session = ((CustomerSurveyActivity)
-                getActivity()).getSession();
-        session.add("answers", Arrays.asList(
-                mCurrentQuestion, ((Button) view).getText()));
-        session.saveEventually();
+        ((CustomerSurveyActivity) getActivity())
+                .getCurrentSession(new GetCallback<ParseObject>() {
+                    @Override public void done(ParseObject session, ParseException e) {
+                        session.add("answers", Arrays.asList(
+                                mCurrentQuestion, ((Button) view).getText()));
+                        session.saveEventually();
+                    }
+                });
         mCallback.onAnswerSelected();
 
         TextView barTitle = (TextView) getActivity()
