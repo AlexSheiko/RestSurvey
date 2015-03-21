@@ -62,7 +62,7 @@
             style="@style/ChoiceButtonLight"
             android:textSize="32sp"
             android:textColor="#c8ffffff"
-            android:background="@drawable/button_start"
+            android:background="@drawable/button_start_light"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:layout_below="@+id/password"

@@ -27,7 +27,7 @@
         android:paddingBottom="24dp"
         android:textSize="32sp"
         android:textColor="#c8ffffff"
-        android:background="@drawable/button_start"
+        android:background="@drawable/button_start_light"
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
@@ -42,6 +42,7 @@
         android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/feedbacksLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Feedbacks today"

@@ -4,5 +4,7 @@
     <color name="start_button">#63c29d</color>
     <color name="start_button_focused">#46b68a</color>
     <color name="start_button_pressed">#1fb078</color>
+    <color name="window_bg_light">#f3f3f3</color>
+    <color name="window_bg_dark">#1b1b1b</color>
 
 </resources>

@@ -51,6 +51,6 @@
         android:paddingBottom="24dp"
         android:textSize="32sp"
         android:textColor="#c8ffffff"
-        android:background="@drawable/button_start"/>
+        android:background="@drawable/button_start_light"/>
 
 </RelativeLayout>
