@@ -5,12 +5,14 @@ import android.os.Bundle;
 
 import sheyko.aleksey.restsurvey.R;
 
-
-public class FinishActivity extends Activity {
+public class AdminLoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finish);
+        if (getActionBar() != null) {
+            getActionBar().hide();
+        }
+        setContentView(R.layout.activity_admin_login);
     }
 }

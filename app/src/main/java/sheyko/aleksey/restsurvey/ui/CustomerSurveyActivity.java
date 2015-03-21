@@ -13,17 +13,16 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.parse.GetCallback;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import sheyko.aleksey.restsurvey.R;
-import sheyko.aleksey.restsurvey.ui.SurveyFragment.OnAnswerSelectedListener;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
+import sheyko.aleksey.restsurvey.ui.CustomerSurveyFragment.OnAnswerSelectedListener;
 
 
-public class SurveyActivity extends FragmentActivity
+public class CustomerSurveyActivity extends FragmentActivity
         implements OnAnswerSelectedListener {
 
     private ViewPager mPager;
@@ -34,9 +33,7 @@ public class SurveyActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_survey);
-
-        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+        setContentView(R.layout.activity_customer_survey);
 
         ActionBar bar = getActionBar();
         if (bar != null) {
@@ -85,7 +82,7 @@ public class SurveyActivity extends FragmentActivity
                     */
                 }
             });
-            startActivity(new Intent(this, FinishActivity.class));
+            startActivity(new Intent(this, CustomerFinishActivity.class));
             finish();
         }
     }
@@ -107,7 +104,7 @@ public class SurveyActivity extends FragmentActivity
 
         @Override
         public Fragment getItem(int position) {
-            return SurveyFragment.newInstance(position);
+            return CustomerSurveyFragment.newInstance(position);
         }
 
         @Override

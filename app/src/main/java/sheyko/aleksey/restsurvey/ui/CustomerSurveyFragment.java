@@ -14,10 +14,10 @@ import sheyko.aleksey.restsurvey.R;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 
 
-public class SurveyFragment extends Fragment
+public class CustomerSurveyFragment extends Fragment
         implements OnClickListener {
 
-    private static final String TAG = SurveyFragment.class.getSimpleName();
+    private static final String TAG = CustomerSurveyFragment.class.getSimpleName();
 
     private QuestionDataSource mDataSource;
     private String mCurrentQuestion;
@@ -28,8 +28,8 @@ public class SurveyFragment extends Fragment
         public void onAnswerSelected();
     }
 
-    public static SurveyFragment newInstance(int page) {
-        SurveyFragment f = new SurveyFragment();
+    public static CustomerSurveyFragment newInstance(int page) {
+        CustomerSurveyFragment f = new CustomerSurveyFragment();
 
         Bundle args = new Bundle();
         args.putInt("page", page);
@@ -65,7 +65,7 @@ public class SurveyFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_survey, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_customer_survey, container, false);
 
         int page = getArguments().getInt("page");
         mCurrentQuestion = mDataSource.getQuestions().get(page);
@@ -101,7 +101,7 @@ public class SurveyFragment extends Fragment
                     TextView barTitle = (TextView) getActivity()
                             .findViewById(R.id.ab_title);
 
-                    int questionsLeft = mDataSource.getCount() - ((SurveyActivity)
+                    int questionsLeft = mDataSource.getCount() - ((CustomerSurveyActivity)
                             getActivity()).getCurrentPage() - 1;
 
                     if (questionsLeft > 0) {

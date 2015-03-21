@@ -11,25 +11,25 @@ import android.widget.Button;
 
 import sheyko.aleksey.restsurvey.R;
 
-public class AdminActivity extends Activity {
+public class AdminPanelActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_admin_panel);
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
             @Override public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this,
-                        StartActivity.class));
+                startActivity(new Intent(AdminPanelActivity.this,
+                        CustomerStartActivity.class));
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_admin, menu);
+        getMenuInflater().inflate(R.menu.menu_admin_panel, menu);
         return true;
     }
 

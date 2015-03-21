@@ -9,21 +9,25 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.parse.ParseAnalytics;
+
 import sheyko.aleksey.restsurvey.R;
 
 
-public class StartActivity extends Activity {
+public class CustomerStartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_customer_start);
+
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
             @Override public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,
-                        SurveyActivity.class)
+                startActivity(new Intent(CustomerStartActivity.this,
+                        CustomerSurveyActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -34,8 +38,8 @@ public class StartActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            Intent i = new Intent(StartActivity.this,
-                    AdminActivity.class);
+            Intent i = new Intent(CustomerStartActivity.this,
+                    AdminPanelActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
