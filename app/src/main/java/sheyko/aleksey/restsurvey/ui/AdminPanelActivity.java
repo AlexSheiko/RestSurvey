@@ -1,5 +1,6 @@
 package sheyko.aleksey.restsurvey.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,16 +9,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import sheyko.aleksey.restsurvey.BaseActivity;
+import java.util.Calendar;
+import java.util.List;
+
 import sheyko.aleksey.restsurvey.R;
 
-public class AdminPanelActivity extends BaseActivity {
+public class AdminPanelActivity extends Activity {
 
     private SharedPreferences mPreferences;
 
@@ -30,6 +39,24 @@ public class AdminPanelActivity extends BaseActivity {
 
         TextView signedAsLabel = (TextView) findViewById(R.id.signedAsLabel);
         signedAsLabel.setText(String.format("Signed in as\n%s", user.getUsername()));
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
+        query.whereGreaterThan("createdAt", cal.getTime());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> sessionList, ParseException e) {
+                if (e == null) {
+                    TextView feedbacksCount = (TextView) findViewById(R.id.feedbacksCount);
+                    Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
+                            AdminPanelActivity.this, android.R.anim.fade_in);
+                    feedbacksCount.startAnimation(hyperspaceJumpAnimation);
+                    feedbacksCount.setText(sessionList.size() + "");
+                }
+            }
+        });
+
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
@@ -91,9 +118,9 @@ public class AdminPanelActivity extends BaseActivity {
                 mPreferences.edit().putBoolean(
                         "lock_app", lockOn).apply();
                 if (lockOn) {
-                    Toast.makeText(this, "Lock app enabled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "App lock enabled", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Lock app disabled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "App lock disabled", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.action_theme:
