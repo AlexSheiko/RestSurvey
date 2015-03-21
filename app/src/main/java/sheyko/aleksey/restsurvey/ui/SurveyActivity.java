@@ -44,16 +44,6 @@ public class SurveyActivity extends FragmentActivity
             bar.setDisplayShowCustomEnabled(true);
             bar.setCustomView(R.layout.ab_survey);
         }
-//        findViewById(R.id.arrow_back).setOnClickListener(new OnClickListener() {
-//            @Override public void onClick(View view) {
-//                navigateToPreviousPage();
-//            }
-//        });
-//        findViewById(R.id.arrow_next).setOnClickListener(new OnClickListener() {
-//            @Override public void onClick(View view) {
-//                navigateToNextPage();
-//            }
-//        });
 
         mPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(
@@ -71,14 +61,6 @@ public class SurveyActivity extends FragmentActivity
                 mDataSource.getCount() - mPager.getCurrentItem()));
 
         navigateToNextPage();
-    }
-
-    private void navigateToPreviousPage() {
-        if (mPager.getCurrentItem() == 0) {
-            finish();
-        } else {
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
-        }
     }
 
     private void navigateToNextPage() {
