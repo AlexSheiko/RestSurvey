@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -22,12 +21,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import sheyko.aleksey.restsurvey.BaseActivityFullscreen;
 import sheyko.aleksey.restsurvey.R;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
 import sheyko.aleksey.restsurvey.ui.CustomerSurveyFragment.OnAnswerSelectedListener;
 
 
-public class CustomerSurveyActivity extends FragmentActivity
+public class CustomerSurveyActivity extends BaseActivityFullscreen
         implements OnAnswerSelectedListener {
 
     private ViewPager mPager;

@@ -13,11 +13,11 @@ import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 
-import sheyko.aleksey.restsurvey.BaseActivityFullscreen;
+import sheyko.aleksey.restsurvey.BaseActivityNoActionBar;
 import sheyko.aleksey.restsurvey.R;
 
 
-public class CustomerStartActivity extends BaseActivityFullscreen {
+public class CustomerStartActivity extends BaseActivityNoActionBar {
 
     private SharedPreferences mPreferences;
 
