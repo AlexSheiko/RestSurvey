@@ -83,10 +83,9 @@ public class AdminPanelActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        updateMenuItemAppearance(item);
         switch (item.getItemId()) {
             case R.id.action_lock:
-                // TODO: Lock app
+                // TODO: Add HOME intent-filter to CustomerStartActivity
                 mPreferences.edit().putBoolean("lock_app",
                         !(mPreferences.getBoolean("lock_app", false))).apply();
                 break;
@@ -94,9 +93,9 @@ public class AdminPanelActivity extends Activity {
                 // TODO: Switch between light and dark themes
                 mPreferences.edit().putBoolean("dark_theme",
                         !(mPreferences.getBoolean("dark_theme", false))).apply();
-                updateMenuItemAppearance(item);
                 break;
         }
+        updateMenuItemAppearance(item);
         return super.onOptionsItemSelected(item);
     }
 }
