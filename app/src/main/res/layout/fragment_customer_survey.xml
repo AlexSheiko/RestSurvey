@@ -4,18 +4,25 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:gravity="center_horizontal"
-              android:paddingTop="56dp"
               android:paddingBottom="56dp"
-              android:paddingLeft="30dp"
-              android:paddingRight="30dp"
+              android:id="@+id/container"
               tools:context="sheyko.aleksey.restsurvey.ui.CustomerSurveyFragment">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:id="@+id/imageView2"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_sample"/>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:background="@android:color/white"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo_sample"/>
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"

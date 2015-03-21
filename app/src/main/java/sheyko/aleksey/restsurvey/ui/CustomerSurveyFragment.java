@@ -1,7 +1,10 @@
 package sheyko.aleksey.restsurvey.ui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -84,6 +87,17 @@ public class CustomerSurveyFragment extends Fragment
             Log.i(TAG, String.format(
                     "There's no questions left for page %d", page));
             questionTextView.setText(R.string.unspecified_question);
+        }
+
+        SharedPreferences sp = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+        boolean isDark = !sp.getBoolean("dark_theme", false);
+
+        if (isDark) {
+            rootView.findViewById(R.id.container).setBackgroundColor(
+                    getResources().getColor(R.color.window_bg_dark));
+            ((TextView) rootView.findViewById(R.id.questionTextView)).setTextColor(
+                    Color.parseColor("#c2ffffff"));
         }
 
         rootView.findViewById(R.id.buttonGood).setOnClickListener(this);
