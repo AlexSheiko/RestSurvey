@@ -9,13 +9,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 
 import com.parse.GetCallback;
+import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import sheyko.aleksey.restsurvey.R;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
@@ -27,12 +32,13 @@ public class CustomerSurveyActivity extends FragmentActivity
 
     private ViewPager mPager;
     private QuestionDataSource mDataSource;
+    private ParseObject mSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(LayoutParams.FLAG_FULLSCREEN,
+                LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_customer_survey);
 
         ActionBar bar = getActionBar();
@@ -47,8 +53,12 @@ public class CustomerSurveyActivity extends FragmentActivity
                 getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
 
-        ParseObject session = new ParseObject("Session");
-        session.saveInBackground();
+        mSession = new ParseObject("Session");
+        mSession.saveInBackground();
+    }
+
+    public ParseObject getSession() {
+        return mSession;
     }
 
     @Override public void onAnswerSelected() {
@@ -61,25 +71,22 @@ public class CustomerSurveyActivity extends FragmentActivity
     }
 
     private void navigateToNextPage() {
-        if (mPager.getCurrentItem() < /* TODO: mDataSource.getCount() - 1*/ mDataSource.getCount() - 1) {
+        if (mPager.getCurrentItem() < mDataSource.getCount() - 1) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
         } else {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
             query.orderByDescending("createdAt");
             query.getFirstInBackground(new GetCallback<ParseObject>() {
                 @Override public void done(ParseObject session, ParseException e) {
-                    // TODO: Uncomment before releasing
-                    /*
                     if (e == null) {
                         Map<String, String> dimensions = new HashMap<>();
 
                         List<List<String>> answers = session.getList("answers");
-                        for(List<String> answer : answers) {
+                        for (List<String> answer : answers) {
                             dimensions.put(answer.get(0), answer.get(1));
                         }
                         ParseAnalytics.trackEventInBackground("Answers", dimensions);
                     }
-                    */
                 }
             });
             startActivity(new Intent(this, CustomerFinishActivity.class));

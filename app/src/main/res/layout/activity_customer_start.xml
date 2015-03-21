@@ -46,7 +46,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
-        style="@style/ChoiceButton"
+        style="@style/ChoiceButtonLight"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
         android:textSize="32sp"

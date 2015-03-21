@@ -59,7 +59,7 @@
         <Button
             android:id="@+id/buttonLogin"
             android:text="Sign in"
-            style="@style/ChoiceButton"
+            style="@style/ChoiceButtonLight"
             android:textSize="32sp"
             android:textColor="#c8ffffff"
             android:background="@drawable/button_start"

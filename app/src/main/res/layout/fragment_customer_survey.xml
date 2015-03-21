@@ -35,17 +35,17 @@
     <Button
         android:id="@+id/buttonGood"
         android:text="Absolutely!"
-        style="@style/ChoiceButton"
+        style="@style/ChoiceButtonLight"
         android:layout_marginTop="40dp"/>
 
     <Button
         android:id="@+id/buttonOkay"
         android:text="It was okay"
-        style="@style/ChoiceButton"/>
+        style="@style/ChoiceButtonLight"/>
 
     <Button
         android:id="@+id/buttonBad"
         android:text="Not as expected"
-        style="@style/ChoiceButton"/>
+        style="@style/ChoiceButtonLight"/>
 
 </LinearLayout>

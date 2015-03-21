@@ -1,6 +1,5 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,12 +10,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
+import sheyko.aleksey.restsurvey.BaseActivity;
 import sheyko.aleksey.restsurvey.R;
 
-public class AdminPanelActivity extends Activity {
+public class AdminPanelActivity extends BaseActivity {
 
     private SharedPreferences mPreferences;
 
@@ -86,13 +87,20 @@ public class AdminPanelActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_lock:
                 // TODO: Add HOME intent-filter to CustomerStartActivity
-                mPreferences.edit().putBoolean("lock_app",
-                        !(mPreferences.getBoolean("lock_app", false))).apply();
+                boolean lockOn = !(mPreferences.getBoolean("lock_app", false));
+                mPreferences.edit().putBoolean(
+                        "lock_app", lockOn).apply();
+                if (lockOn) {
+                    Toast.makeText(this, "Lock app enabled", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Lock app disabled", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.action_theme:
-                // TODO: Switch between light and dark themes
-                mPreferences.edit().putBoolean("dark_theme",
-                        !(mPreferences.getBoolean("dark_theme", false))).apply();
+                recreate();
+                boolean isDark = !(mPreferences.getBoolean("dark_theme", false));
+                mPreferences.edit().putBoolean(
+                        "dark_theme", isDark).apply();
                 break;
             case R.id.action_logout:
                 ParseUser.logOut();

@@ -8,7 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.parse.ParseObject;
+
+import java.util.Arrays;
 
 import sheyko.aleksey.restsurvey.R;
 import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
@@ -87,35 +92,24 @@ public class CustomerSurveyFragment extends Fragment
     }
 
     @Override public void onClick(final View view) {
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
-//        query.orderByDescending("createdAt");
-//        query.getFirstInBackground(new GetCallback<ParseObject>() {
-//            @Override public void done(ParseObject session, ParseException e) {
-//                if (e == null) {
-//                    session.add("answers", Arrays.asList(
-//                            mCurrentQuestion, ((Button) view).getText()));
-                    // TODO: Uncomment before releasing
-                    // session.saveEventually();
-                    mCallback.onAnswerSelected();
+        ParseObject session = ((CustomerSurveyActivity)
+                getActivity()).getSession();
+        session.add("answers", Arrays.asList(
+                mCurrentQuestion, ((Button) view).getText()));
+        session.saveEventually();
+        mCallback.onAnswerSelected();
 
-                    TextView barTitle = (TextView) getActivity()
-                            .findViewById(R.id.ab_title);
+        TextView barTitle = (TextView) getActivity()
+                .findViewById(R.id.ab_title);
 
-                    int questionsLeft = mDataSource.getCount() - ((CustomerSurveyActivity)
-                            getActivity()).getCurrentPage() - 1;
+        int questionsLeft = mDataSource.getCount() - ((CustomerSurveyActivity)
+                getActivity()).getCurrentPage() - 1;
 
-                    if (questionsLeft > 0) {
-                        barTitle.setText(String.format(
-                                "%d questions left", questionsLeft));
-                    } else {
-                        barTitle.setText("Last question");
-                    }
-//                } else {
-//                    Toast.makeText(getActivity(),
-//                            "Please check your network connection",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        if (questionsLeft > 0) {
+            barTitle.setText(String.format(
+                    "%d questions left", questionsLeft));
+        } else {
+            barTitle.setText("Last question");
+        }
     }
 }
