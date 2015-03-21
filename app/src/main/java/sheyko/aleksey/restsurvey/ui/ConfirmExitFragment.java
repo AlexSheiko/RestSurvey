@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -21,24 +22,30 @@ public class ConfirmExitFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        ((CustomerStartActivity) getActivity()).confirmExit();
-                    }
-                }
-        );
+
         View view = getActivity().getLayoutInflater()
                 .inflate(R.layout.fragment_confirm_exit, null);
 
-        String username = ParseUser.getCurrentUser()
-                .getUsername();
+        final ParseUser user = ParseUser.getCurrentUser();
 
-        EditText passwordField = (EditText)
+        final EditText passwordField = (EditText)
                 view.findViewById(R.id.password);
         passwordField.setHint(String.format(
-                "%s\'s pin code", username));
+                "%s\'s pin code", user.getUsername()));
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setPositiveButton(android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        if (passwordField.getText().toString().equals(user.getString("pin"))) {
+                            ((CustomerStartActivity) getActivity()).confirmExit();
+                        } else {
+                            Toast.makeText(getActivity(), "Pin code doesn't match",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
 
         builder.setView(view);
         return builder.create();

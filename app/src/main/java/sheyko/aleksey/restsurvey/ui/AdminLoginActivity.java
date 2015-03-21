@@ -33,6 +33,7 @@ public class AdminLoginActivity extends Activity {
                 ParseUser user = new ParseUser();
                 user.setUsername(jobTitle.getText().toString().trim());
                 user.setPassword(password.getText().toString());
+                user.put("pin", password.getText().toString());
 
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
