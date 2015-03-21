@@ -2,11 +2,13 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="sheyko.aleksey.restsurvey.ui.CustomerSurveyActivity">
     <item android:id="@+id/action_lock"
-          android:icon="@drawable/ic_lock"
+          android:icon="@drawable/ic_lock_on"
           android:title="@string/action_lock"
-          android:showAsAction="always"/>
-    <item android:id="@+id/action_switch_theme"
-          android:icon="@drawable/ic_switch_theme"
+          android:showAsAction="always"
+          android:checkable="true"/>
+    <item android:id="@+id/action_theme"
+          android:icon="@drawable/ic_theme_light"
           android:title="@string/action_change_theme"
-          android:showAsAction="ifRoom"/>
+          android:showAsAction="ifRoom"
+          android:checkable="true"/>
 </menu>
