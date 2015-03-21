@@ -32,6 +32,13 @@ public class AdminPanelActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mPreferences = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        if (mPreferences.getBoolean("dark_theme", false)) {
+            setTheme(R.style.AppTheme_Light);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
@@ -113,7 +120,6 @@ public class AdminPanelActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_lock:
-                // TODO: Add HOME intent-filter to CustomerStartActivity
                 boolean lockOn = !(mPreferences.getBoolean("lock_app", false));
                 mPreferences.edit().putBoolean(
                         "lock_app", lockOn).apply();
@@ -124,10 +130,14 @@ public class AdminPanelActivity extends Activity {
                 }
                 break;
             case R.id.action_theme:
-                recreate();
                 boolean isDark = !(mPreferences.getBoolean("dark_theme", false));
                 mPreferences.edit().putBoolean(
                         "dark_theme", isDark).apply();
+                Intent intent = new Intent(this, ChangeThemeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.action_logout:
                 ParseUser.logOut();
