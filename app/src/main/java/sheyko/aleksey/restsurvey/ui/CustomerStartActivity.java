@@ -1,6 +1,5 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,10 +13,13 @@ import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 
+import sheyko.aleksey.restsurvey.BaseActivityFullscreen;
 import sheyko.aleksey.restsurvey.R;
 
 
-public class CustomerStartActivity extends Activity {
+public class CustomerStartActivity extends BaseActivityFullscreen {
+
+    private SharedPreferences mPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class CustomerStartActivity extends Activity {
         setContentView(R.layout.activity_customer_start);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+        mPreferences = PreferenceManager
+                .getDefaultSharedPreferences(this);
 
         Button b = (Button) findViewById(R.id.startButton);
         b.setOnClickListener(new OnClickListener() {
@@ -34,6 +39,10 @@ public class CustomerStartActivity extends Activity {
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
+        if (!mPreferences.getBoolean("dark_theme", false)) {
+            b.setBackground(getResources().getDrawable(
+                    R.drawable.button_start_dark));
+        }
     }
 
     private boolean doubleBackToExitPressedOnce;
@@ -41,9 +50,7 @@ public class CustomerStartActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            SharedPreferences preferences = PreferenceManager
-                    .getDefaultSharedPreferences(this);
-            if (preferences.getBoolean("lock_app", false)) {
+            if (mPreferences.getBoolean("lock_app", false)) {
                 DialogFragment f = new ConfirmExitFragment();
                 f.show(getFragmentManager(), "dialog");
             } else {

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:textSize="60sp"
-        android:textColor="#5e000000"
+        tools:textColor="#5e000000"
         android:id="@+id/signedAsLabel"
         android:gravity="center_horizontal"
         android:layout_above="@+id/startButton"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="70sp"
-                android:textColor="#b2000000"
+                tools:textColor="#b2000000"
                 tools:text="3"/>
 
     </LinearLayout>

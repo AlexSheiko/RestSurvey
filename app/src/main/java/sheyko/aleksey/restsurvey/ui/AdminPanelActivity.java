@@ -1,9 +1,7 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -25,34 +23,26 @@ import com.parse.ParseUser;
 import java.util.Calendar;
 import java.util.List;
 
+import sheyko.aleksey.restsurvey.BaseActivityActionBar;
 import sheyko.aleksey.restsurvey.R;
 
-public class AdminPanelActivity extends Activity {
+public class AdminPanelActivity extends BaseActivityActionBar {
 
     private SharedPreferences mPreferences;
-    private boolean mIsDark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mPreferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
-        mIsDark = mPreferences.getBoolean("dark_theme", false);
-        if (mIsDark) {
-            setTheme(R.style.AppTheme_Light);
-        } else {
-            setTheme(R.style.AppTheme_Dark);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
         ParseUser user = ParseUser.getCurrentUser();
         if (user == null) return;
 
+        mPreferences = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
         TextView signedAsLabel = (TextView) findViewById(R.id.signedAsLabel);
         signedAsLabel.setText(String.format("Signed in as\n%s", user.getUsername()));
-        if (!mIsDark) {
-            signedAsLabel.setTextColor(Color.parseColor("#85ffffff"));
-        }
 
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -62,16 +52,11 @@ public class AdminPanelActivity extends Activity {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> sessionList, ParseException e) {
                 if (e == null) {
-                    TextView feedbacksLabel = (TextView) findViewById(R.id.feedbacksLabel);
                     TextView feedbacksCount = (TextView) findViewById(R.id.feedbacksCount);
                     Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
                             AdminPanelActivity.this, android.R.anim.fade_in);
                     feedbacksCount.startAnimation(hyperspaceJumpAnimation);
                     feedbacksCount.setText(sessionList.size() + "");
-                    if (!mIsDark) {
-                        feedbacksLabel.setTextColor(Color.parseColor("#b9ffffff"));
-                        feedbacksCount.setTextColor(Color.parseColor("#b9ffffff"));
-                    }
                 }
             }
         });
@@ -84,13 +69,10 @@ public class AdminPanelActivity extends Activity {
                         CustomerStartActivity.class));
             }
         });
-        if (!mIsDark) {
+        if (!mPreferences.getBoolean("dark_theme", false)) {
             b.setBackground(getResources().getDrawable(
                     R.drawable.button_start_dark));
         }
-
-        mPreferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
     }
 
     @Override public boolean onPrepareOptionsMenu(Menu menu) {

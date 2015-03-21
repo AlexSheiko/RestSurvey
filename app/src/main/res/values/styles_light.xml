@@ -3,11 +3,13 @@
     <!-- Base application theme. -->
     <style name="AppTheme.NoActionBar.Light" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/page_bg</item>
     </style>
 
     <style name="AppTheme.Light" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ActionBar.Light</item>
         <item name="android:windowBackground">@color/window_bg_light</item>
+        <item name="android:textColor">#b2000000</item>
     </style>
 
     <style name="ActionBar.Light" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
