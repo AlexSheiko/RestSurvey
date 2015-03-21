@@ -11,4 +11,7 @@
           android:title="@string/action_change_theme"
           android:showAsAction="ifRoom"
           android:checkable="true"/>
+    <item android:id="@+id/action_logout"
+          android:title="@string/action_logout"
+          android:showAsAction="never"/>
 </menu>

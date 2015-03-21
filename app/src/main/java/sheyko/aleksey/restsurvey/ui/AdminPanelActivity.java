@@ -94,6 +94,10 @@ public class AdminPanelActivity extends Activity {
                 mPreferences.edit().putBoolean("dark_theme",
                         !(mPreferences.getBoolean("dark_theme", false))).apply();
                 break;
+            case R.id.action_logout:
+                ParseUser.logOut();
+                startActivity(new Intent(this, AdminLoginActivity.class));
+                break;
         }
         updateMenuItemAppearance(item);
         return super.onOptionsItemSelected(item);
