@@ -98,11 +98,29 @@ public class CustomerSurveyFragment extends Fragment
                     getResources().getColor(R.color.window_bg_dark));
             ((TextView) rootView.findViewById(R.id.questionTextView)).setTextColor(
                     Color.parseColor("#c2ffffff"));
+
+            Button firstButton = (Button) rootView.findViewById(R.id.firstButton);
+            firstButton.setBackground(
+                    getResources().getDrawable(R.drawable.button_choice_dark));
+            firstButton.setTextColor(
+                    Color.parseColor("#c2ffffff"));
+
+            Button secondButton = (Button) rootView.findViewById(R.id.secondButton);
+            secondButton.setBackground(
+                    getResources().getDrawable(R.drawable.button_choice_dark));
+            secondButton.setTextColor(
+                    Color.parseColor("#c2ffffff"));
+
+            Button thirdButton = (Button) rootView.findViewById(R.id.thirdButton);
+            thirdButton.setTextColor(
+                    Color.parseColor("#c2ffffff"));
+            thirdButton.setBackground(
+                    getResources().getDrawable(R.drawable.button_choice_dark));
         }
 
-        rootView.findViewById(R.id.buttonGood).setOnClickListener(this);
-        rootView.findViewById(R.id.buttonOkay).setOnClickListener(this);
-        rootView.findViewById(R.id.buttonBad).setOnClickListener(this);
+        rootView.findViewById(R.id.firstButton).setOnClickListener(this);
+        rootView.findViewById(R.id.secondButton).setOnClickListener(this);
+        rootView.findViewById(R.id.thirdButton).setOnClickListener(this);
 
         return rootView;
     }

@@ -39,18 +39,18 @@
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/buttonGood"
+        android:id="@+id/firstButton"
         android:text="Absolutely!"
         style="@style/ChoiceButtonLight"
         android:layout_marginTop="40dp"/>
 
     <Button
-        android:id="@+id/buttonOkay"
+        android:id="@+id/secondButton"
         android:text="It was okay"
         style="@style/ChoiceButtonLight"/>
 
     <Button
-        android:id="@+id/buttonBad"
+        android:id="@+id/thirdButton"
         android:text="Not as expected"
         style="@style/ChoiceButtonLight"/>
 
