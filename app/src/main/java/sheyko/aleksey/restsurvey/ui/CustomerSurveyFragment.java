@@ -126,6 +126,36 @@ public class CustomerSurveyFragment extends Fragment
                     Color.parseColor("#c2ffffff"));
             thirdButton.setBackground(
                     getResources().getDrawable(R.drawable.button_choice_dark));
+
+            Button fourthButton = (Button) rootView.findViewById(R.id.fourthButton);
+            fourthButton.setTextColor(
+                    Color.parseColor("#c2ffffff"));
+            fourthButton.setBackground(
+                    getResources().getDrawable(R.drawable.button_choice_dark));
+        }
+
+        if (mQuestions.get(page).getAnswers().size() > 0) {
+            Button firstButton = (Button) rootView.findViewById(R.id.firstButton);
+            firstButton.setVisibility(View.VISIBLE);
+            firstButton.setText(mQuestions.get(page).getAnswers().get(0) + "");
+        }
+
+        if (mQuestions.get(page).getAnswers().size() > 1) {
+            Button secondButton = (Button) rootView.findViewById(R.id.secondButton);
+            secondButton.setVisibility(View.VISIBLE);
+            secondButton.setText(mQuestions.get(page).getAnswers().get(1));
+        }
+
+        if (mQuestions.get(page).getAnswers().size() > 2) {
+            Button thirdButton = (Button) rootView.findViewById(R.id.thirdButton);
+            thirdButton.setVisibility(View.VISIBLE);
+            thirdButton.setText(mQuestions.get(page).getAnswers().get(2));
+        }
+
+        if (mQuestions.get(page).getAnswers().size() > 3) {
+            Button fourthButton = (Button) rootView.findViewById(R.id.fourthButton);
+            fourthButton.setVisibility(View.VISIBLE);
+            fourthButton.setText(mQuestions.get(page).getAnswers().get(3));
         }
 
         rootView.findViewById(R.id.firstButton).setOnClickListener(this);

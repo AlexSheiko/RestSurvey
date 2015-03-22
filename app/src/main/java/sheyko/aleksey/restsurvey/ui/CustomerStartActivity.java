@@ -33,6 +33,7 @@ public class CustomerStartActivity extends BaseActivityNoActionBar {
         setContentView(R.layout.activity_customer_start);
 
         ParseQuery<Question> query = Question.getQuery();
+        query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<Question>() {
             @Override public void done(List<Question> questions, ParseException e) {
                 for (Question question : questions) {

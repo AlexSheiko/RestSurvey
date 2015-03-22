@@ -40,18 +40,27 @@
 
     <Button
         android:id="@+id/firstButton"
-        android:text="Absolutely!"
+        tools:text="Absolutely!"
         style="@style/ChoiceButtonLight"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/secondButton"
-        android:text="It was okay"
-        style="@style/ChoiceButtonLight"/>
+        tools:text="It was okay"
+        style="@style/ChoiceButtonLight"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/thirdButton"
-        android:text="Not as expected"
-        style="@style/ChoiceButtonLight"/>
+        tools:text="Not as expected"
+        style="@style/ChoiceButtonLight"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/fourthButton"
+        tools:text="Need improment"
+        style="@style/ChoiceButtonLight"
+        android:visibility="gone"/>
 
 </LinearLayout>
