@@ -11,10 +11,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 import sheyko.aleksey.restsurvey.BaseActivityNoActionBar;
 import sheyko.aleksey.restsurvey.R;
+import sheyko.aleksey.restsurvey.provider.Question;
 
 
 public class CustomerStartActivity extends BaseActivityNoActionBar {
@@ -25,6 +31,15 @@ public class CustomerStartActivity extends BaseActivityNoActionBar {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_start);
+
+        ParseQuery<Question> query = Question.getQuery();
+        query.findInBackground(new FindCallback<Question>() {
+            @Override public void done(List<Question> questions, ParseException e) {
+                for (Question question : questions) {
+                    question.pinInBackground();
+                }
+            }
+        });
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 

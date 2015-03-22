@@ -17,11 +17,14 @@ import android.widget.TextView;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import sheyko.aleksey.restsurvey.R;
-import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
+import sheyko.aleksey.restsurvey.provider.Question;
 
 
 public class CustomerSurveyFragment extends Fragment
@@ -29,7 +32,7 @@ public class CustomerSurveyFragment extends Fragment
 
     private static final String TAG = CustomerSurveyFragment.class.getSimpleName();
 
-    private QuestionDataSource mDataSource;
+    private List<Question> mQuestions = new ArrayList<>();
     private String mCurrentQuestion;
 
     OnAnswerSelectedListener mCallback;
@@ -62,14 +65,21 @@ public class CustomerSurveyFragment extends Fragment
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDataSource = new QuestionDataSource();
+
+        ParseQuery<Question> query = Question.getQuery();
+        query.fromLocalDatastore();
+        try {
+            mQuestions = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         TextView barTitle = (TextView) getActivity()
                 .findViewById(R.id.ab_title);
 
         barTitle.setText(String.format(
                 "%s questions left",
-                mDataSource.getCount() - 1));
+                mQuestions.size() - 1));
     }
 
     @Override
@@ -78,7 +88,7 @@ public class CustomerSurveyFragment extends Fragment
         View rootView = inflater.inflate(R.layout.fragment_customer_survey, container, false);
 
         int page = getArguments().getInt("page");
-        mCurrentQuestion = mDataSource.getQuestions().get(page);
+        mCurrentQuestion = mQuestions.get(page).getTitle();
 
         TextView questionTextView = (TextView) rootView.findViewById(R.id.questionTextView);
         if (!mCurrentQuestion.trim().isEmpty()) {
@@ -139,7 +149,7 @@ public class CustomerSurveyFragment extends Fragment
         TextView barTitle = (TextView) getActivity()
                 .findViewById(R.id.ab_title);
 
-        int questionsLeft = mDataSource.getCount() - ((CustomerSurveyActivity)
+        int questionsLeft = mQuestions.size() - ((CustomerSurveyActivity)
                 getActivity()).getCurrentPage() - 1;
 
         if (questionsLeft > 0) {

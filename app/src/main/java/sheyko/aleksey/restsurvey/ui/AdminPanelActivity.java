@@ -137,6 +137,9 @@ public class AdminPanelActivity extends BaseActivityActionBar {
                 startActivity(intent);
                 finish();
                 break;
+            case R.id.action_update:
+                // TODO: Execute new online query to update questions
+                break;
             case R.id.action_logout:
                 ParseUser.logOut();
                 startActivity(new Intent(this, AdminLoginActivity.class));

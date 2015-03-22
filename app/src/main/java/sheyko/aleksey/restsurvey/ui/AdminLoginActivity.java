@@ -1,6 +1,5 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +13,10 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import sheyko.aleksey.restsurvey.BaseActivityNoActionBar;
 import sheyko.aleksey.restsurvey.R;
 
-public class AdminLoginActivity extends Activity {
+public class AdminLoginActivity extends BaseActivityNoActionBar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

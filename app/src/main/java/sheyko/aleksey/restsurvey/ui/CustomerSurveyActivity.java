@@ -17,13 +17,14 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import sheyko.aleksey.restsurvey.BaseActivityFullscreen;
 import sheyko.aleksey.restsurvey.R;
-import sheyko.aleksey.restsurvey.provider.QuestionDataSource;
+import sheyko.aleksey.restsurvey.provider.Question;
 import sheyko.aleksey.restsurvey.ui.CustomerSurveyFragment.OnAnswerSelectedListener;
 
 
@@ -31,7 +32,7 @@ public class CustomerSurveyActivity extends BaseActivityFullscreen
         implements OnAnswerSelectedListener {
 
     private ViewPager mPager;
-    private QuestionDataSource mDataSource;
+    private List<Question> mQuestions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +67,13 @@ public class CustomerSurveyActivity extends BaseActivityFullscreen
         TextView barTitle = (TextView) findViewById(R.id.ab_title);
         barTitle.setText(String.format(
                 "%s questions left",
-                mDataSource.getCount() - mPager.getCurrentItem()));
+                mQuestions.size() - mPager.getCurrentItem()));
 
         navigateToNextPage();
     }
 
     private void navigateToNextPage() {
-        if (mPager.getCurrentItem() < mDataSource.getCount() - 1) {
+        if (mPager.getCurrentItem() < mQuestions.size() - 1) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
         } else {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
@@ -114,7 +115,13 @@ public class CustomerSurveyActivity extends BaseActivityFullscreen
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
-            mDataSource = new QuestionDataSource();
+            ParseQuery<Question> query = Question.getQuery();
+            query.fromLocalDatastore();
+            try {
+                mQuestions = query.find();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -124,7 +131,7 @@ public class CustomerSurveyActivity extends BaseActivityFullscreen
 
         @Override
         public int getCount() {
-            return mDataSource.getCount();
+            return mQuestions.size();
         }
     }
 
