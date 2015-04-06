@@ -38,8 +38,10 @@
     <style name="ChoiceButtonLight">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">#585959</item>
+        <item name="android:paddingLeft">26dp</item>
+        <item name="android:paddingRight">26dp</item>
         <item name="android:paddingTop">22dp</item>
         <item name="android:paddingBottom">22dp</item>
         <item name="android:layout_marginBottom">28dp</item>

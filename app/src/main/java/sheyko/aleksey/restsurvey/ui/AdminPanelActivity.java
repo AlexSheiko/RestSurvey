@@ -71,6 +71,8 @@ public class AdminPanelActivity extends BaseActivityActionBar {
         });
         if (!mPreferences.getBoolean("dark_theme", false)) {
             b.setBackgroundResource(R.drawable.button_start_dark);
+
+            findViewById(R.id.container).setBackgroundResource(R.color.window_bg_dark);
         }
     }
 

@@ -8,9 +8,8 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.Dark" parent="@style/Theme.AppCompat">
         <item name="actionBarStyle">@style/ActionBar.Dark</item>
-        <item name="android:windowBackground">@color/window_bg_dark</item>
         <item name="android:textColor">#85ffffff</item>
     </style>
 
@@ -38,8 +37,10 @@
     <style name="ChoiceButtonDark">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">#585959</item>
+        <item name="android:paddingLeft">26dp</item>
+        <item name="android:paddingRight">26dp</item>
         <item name="android:paddingTop">22dp</item>
         <item name="android:paddingBottom">22dp</item>
         <item name="android:layout_marginBottom">28dp</item>
@@ -48,5 +49,5 @@
     </style>
 
     <color name="actionbar_empty_dark">#1b1b1b</color>
-    <color name="actionbar_background_dark">#32000000</color>
+    <color name="actionbar_background_dark">#161616</color>
 </resources>

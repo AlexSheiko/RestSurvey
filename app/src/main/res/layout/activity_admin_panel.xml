@@ -1,8 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="sheyko.aleksey.restsurvey.ui.AdminPanelActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:background="@color/window_bg_light"
+    tools:context="sheyko.aleksey.restsurvey.ui.AdminPanelActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +17,7 @@
         android:layout_above="@+id/startButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="122dp"
-        tools:text="Signed in as\nmanager"/>
+        tools:text="Signed in as\nmanager" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,7 +32,7 @@
         android:background="@drawable/button_start_light"
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -41,20 +43,20 @@
         android:layout_marginBottom="98dp"
         android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/feedbacksLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Feedbacks today"
-                android:textSize="26sp"/>
+        <TextView
+            android:id="@+id/feedbacksLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedbacks today"
+            android:textSize="26sp" />
 
-            <TextView
-                android:id="@+id/feedbacksCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="70sp"
-                tools:textColor="#b2000000"
-                tools:text="3"/>
+        <TextView
+            android:id="@+id/feedbacksCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="70sp"
+            tools:textColor="#b2000000"
+            tools:text="3" />
 
     </LinearLayout>
 
