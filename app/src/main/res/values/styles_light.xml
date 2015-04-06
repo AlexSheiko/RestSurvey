@@ -1,36 +1,38 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme.NoActionBar.Light" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+    <style name="AppTheme.NoActionBar.Light" parent="@style/Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@drawable/page_bg</item>
+
+        <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="AppTheme.Light" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBar.Light</item>
+    <style name="AppTheme.Light" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarStyle">@style/ActionBar.Light</item>
         <item name="android:windowBackground">@color/window_bg_light</item>
         <item name="android:textColor">#b2000000</item>
     </style>
 
-    <style name="ActionBar.Light" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#0e91a1</item>
-        <item name="android:titleTextStyle">@style/ActionBar.TextStyle.Light</item>
+    <style name="ActionBar.Light" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/actionbar_background_light</item>
+        <item name="titleTextStyle">@style/ActionBar.TextStyle.Light</item>
         <item name="android:icon">@android:color/transparent</item>
     </style>
 
-    <style name="ActionBar.TextStyle.Light" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    <style name="ActionBar.TextStyle.Light" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">#b5ffffff</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="AppTheme.EmptyActionBar.Light" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBar.Empty.Light</item>
+    <style name="AppTheme.EmptyActionBar.Light" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarStyle">@style/ActionBar.Empty.Light</item>
     </style>
 
-    <style name="ActionBar.Empty.Light" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#0e91a1</item>
-        <item name="android:displayOptions">none</item>
+    <style name="ActionBar.Empty.Light" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/actionbar_empty_light</item>
+        <item name="displayOptions">none</item>
     </style>
 
     <style name="ChoiceButtonLight">
@@ -45,4 +47,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <color name="actionbar_background_light">#0e91a1</color>
+    <color name="actionbar_empty_light">#0e91a1</color>
 </resources>

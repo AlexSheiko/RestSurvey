@@ -1,11 +1,11 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,6 +32,8 @@ public class CustomerStartActivity extends BaseActivityNoActionBar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_start);
 
+        getSupportActionBar().hide();
+
         ParseQuery<Question> query = Question.getQuery();
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<Question>() {
@@ -56,8 +58,7 @@ public class CustomerStartActivity extends BaseActivityNoActionBar {
             }
         });
         if (!mPreferences.getBoolean("dark_theme", false)) {
-            b.setBackground(getResources().getDrawable(
-                    R.drawable.button_start_dark));
+            b.setBackgroundResource(R.drawable.button_start_dark);
         }
     }
 
@@ -68,7 +69,7 @@ public class CustomerStartActivity extends BaseActivityNoActionBar {
         if (doubleBackToExitPressedOnce) {
             if (mPreferences.getBoolean("lock_app", false)) {
                 DialogFragment f = new ConfirmExitFragment();
-                f.show(getFragmentManager(), "dialog");
+                f.show(getSupportFragmentManager(), "dialog");
             } else {
                 super.onBackPressed();
             }

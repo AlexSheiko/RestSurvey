@@ -1,6 +1,5 @@
 package sheyko.aleksey.restsurvey.ui;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 
@@ -41,7 +41,7 @@ public class CustomerSurveyActivity extends BaseActivityFullscreen
                 LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_customer_survey);
 
-        ActionBar bar = getActionBar();
+        ActionBar bar = getSupportActionBar();
         if (bar != null) {
             bar.setDisplayHomeAsUpEnabled(false);
             bar.setDisplayShowCustomEnabled(true);

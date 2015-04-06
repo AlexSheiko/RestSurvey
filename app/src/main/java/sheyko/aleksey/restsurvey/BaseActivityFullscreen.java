@@ -3,11 +3,13 @@ package sheyko.aleksey.restsurvey;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
 
-public class BaseActivityFullscreen extends FragmentActivity {
+public class BaseActivityFullscreen extends ActionBarActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         SharedPreferences sp = PreferenceManager
                 .getDefaultSharedPreferences(this);

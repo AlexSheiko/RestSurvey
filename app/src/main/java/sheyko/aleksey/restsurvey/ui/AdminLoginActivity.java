@@ -21,8 +21,8 @@ public class AdminLoginActivity extends BaseActivityNoActionBar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getActionBar() != null) {
-            getActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_admin_login);
 

@@ -110,28 +110,24 @@ public class CustomerSurveyFragment extends Fragment
                     Color.parseColor("#c2ffffff"));
 
             Button firstButton = (Button) rootView.findViewById(R.id.firstButton);
-            firstButton.setBackground(
-                    getResources().getDrawable(R.drawable.button_choice_dark));
+            firstButton.setBackgroundResource(R.drawable.button_choice_dark);
             firstButton.setTextColor(
                     Color.parseColor("#c2ffffff"));
 
             Button secondButton = (Button) rootView.findViewById(R.id.secondButton);
-            secondButton.setBackground(
-                    getResources().getDrawable(R.drawable.button_choice_dark));
+            secondButton.setBackgroundResource(R.drawable.button_choice_dark);
             secondButton.setTextColor(
                     Color.parseColor("#c2ffffff"));
 
             Button thirdButton = (Button) rootView.findViewById(R.id.thirdButton);
+            thirdButton.setBackgroundResource(R.drawable.button_choice_dark);
             thirdButton.setTextColor(
                     Color.parseColor("#c2ffffff"));
-            thirdButton.setBackground(
-                    getResources().getDrawable(R.drawable.button_choice_dark));
 
             Button fourthButton = (Button) rootView.findViewById(R.id.fourthButton);
+            fourthButton.setBackgroundResource(R.drawable.button_choice_dark);
             fourthButton.setTextColor(
                     Color.parseColor("#c2ffffff"));
-            fourthButton.setBackground(
-                    getResources().getDrawable(R.drawable.button_choice_dark));
         }
 
         if (mQuestions.get(page).getAnswers().size() > 0) {

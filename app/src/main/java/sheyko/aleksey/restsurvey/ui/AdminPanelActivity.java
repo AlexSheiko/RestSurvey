@@ -70,8 +70,7 @@ public class AdminPanelActivity extends BaseActivityActionBar {
             }
         });
         if (!mPreferences.getBoolean("dark_theme", false)) {
-            b.setBackground(getResources().getDrawable(
-                    R.drawable.button_start_dark));
+            b.setBackgroundResource(R.drawable.button_start_dark);
         }
     }
 

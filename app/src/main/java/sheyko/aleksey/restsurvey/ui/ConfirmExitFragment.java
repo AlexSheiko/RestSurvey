@@ -3,9 +3,10 @@ package sheyko.aleksey.restsurvey.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,9 +20,9 @@ public class ConfirmExitFragment extends DialogFragment {
     public ConfirmExitFragment() {
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
 
         View view = getActivity().getLayoutInflater()
                 .inflate(R.layout.fragment_confirm_exit, null);
